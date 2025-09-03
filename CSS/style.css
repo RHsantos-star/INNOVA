@@ -1,0 +1,100 @@
+.header{
+    background-color:#1F3C4C; /* Cor de Fundo */
+    padding: 10px 20px; /* Tamanho da Area */
+    align-items: center; /* Alinhar no Centro */
+    display:flex; /* Redimensionar */
+    justify-content: space-between; /* Colocar lado a lado */
+}
+/* Configurando a Logo do Site */
+.logo{
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 18px; /* Tamanho da Fonte do Texto */
+    font-weight: bold; /* Texto em Negrito */
+}
+ .logo img{ /* Dimensões da Imagem */
+    width: 80px; /* Tamanho */
+    margin-right: 10px; /* Margens */
+
+ }
+
+  /* Configuração da Barra de Pesquisa */
+
+  .search-box{
+    flex: 1;
+    max-width: 600px; /* Largura Maxima */
+    margin: 0 20px; /* Margem Superior e Lateral */
+    position: relative; /* Posição */
+   
+  }
+
+  .search-box input{ /* Configuração da parte de dentro*/
+    width: 100%; /* Preencher toda a area */
+    padding: 10px 40px 10px 15px; /* Definindo o espaço de Cima, Direita, Baixo e Esquerda*/
+    border: none; /* Borda da Caixa */
+    border-radius: 20px; /* Expressura da Borda */
+    font-size: 16px; /* Tamanho da Fonte do Texto */
+  }
+
+  /* Configurando Icones no Menu Superior */
+
+  .icons{
+    display:flex; /* Os icones ficam flexiveis a mudança de Tela */
+    gap: 15px; /* Espaço entre Icones */
+    align-items: center; /* Centralizar os Itens no meio do Menu */
+
+  }
+
+  .icons img{ /* Configurando as imagens dos Icones */
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+
+  /* Configurações do Rodapé */
+
+  .footer{
+    background-color: #868B9F; /* Cor de Fundo */
+    padding: 15px 40px 15px 40px;
+    color: white; /* Cor do Texto */
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .footer-esquerdo{
+    font-weight: bold; /* Colocar o texto em negrito */
+    margin: 0;
+  }
+
+  .footer-direito{
+    text-align: right; /* Texto Alinhado para a direita*/
+    margin: 0 0 8px 0;
+  }
+
+  .icons-sociais{
+    /* Configurando area dos icones das redes sociais*/
+    display:flex;
+    gap: 20px;
+    /* Distancia entre eles */
+    justify-content: flex-end;
+
+  }
+
+  .icons-sociais img{
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s; /* Animação suave */
+
+  }
+
+  html,body{
+    height: 100%; /* Ocupar 100% a altura da tela */
+    margin: 0; /* Remove as margens padrão*/
+    display: flex;
+    flex-direction: column; /* Organiza as Colunas */
+
+  }
+  main{
+    flex: 1; /* Mandar o rodapé para baixo */
+
+  }
