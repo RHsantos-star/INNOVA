@@ -8,7 +8,45 @@
        <link rel="stylesheet" href="../CSS/style.css">
   </head>
   <body>
-                                  
-                                                                                               
+<!-- Criando as áreas da tela -->
+<div class="container-fluid">
+  <div class="row min-vh-100">
+    
+    <!-- Coluna Esquerda (75%) -->
+    <div class="col-9 d-flex align-items-center justify-content-center">
+      <!-- Conteúdo da área esquerda -->
+      <div class="w-100 d-flex justify-content-center">
+        <form class="login-card shadow-sm p-4 rounded-3 text-white" style="background-color: #868B9F; max-width: 400px; width: 100%;">
+          <h2 class="fs-5 fw-semibold mb-3 text-uppercase text-center">Login</h2>
+
+          <label class="fw-semibold">CPF:</label>
+          <input type="text" class="form-control mb-3" placeholder="Digite seu CPF" required />
+
+          <label class="fw-semibold">Senha:</label>
+          <input type="password" class="form-control mb-3" placeholder="Digite sua Senha" required />
+
+          <!-- Botão Entrar -->
+          <button type="submit" class="btn w-100 mt-3 text-white" style="background-color: #C9A66B;">Entrar</button>
+
+          <!-- Botão Esqueci Senha -->
+          <a href="#" class="btn w-100 mt-3 text-white" style="background-color: #C9A66B;">Esqueci Minha Senha</a>
+        </form>
+      </div>
+    </div>
+
+    <!-- Coluna Direita (25%) -->
+    <div class="col-3 d-flex flex-column justify-content-center align-items-center" style="background-color: #868B9F;">
+      <!-- Botão Cadastre-se -->
+      <a href="../index.html" class="btn mb-4 text-white" style="background-color: #C9A66B; width: 80%;">Cadastre-se</a>
+      
+      <!-- Logo -->
+      <img src="../IMG/logoLoja.png" alt="logoLoja" class="logo-login img-fluid" style="max-width: 80%; height: auto;" />
+    </div>
+
+  </div>
+</div>
+
+              
+                                                                                            
   </body>
 </html>

@@ -98,3 +98,53 @@
     flex: 1; /* Mandar o rodapé para baixo */
 
   }
+/* ============================= */
+/* Inicio do Estilo da Página de Cadastro */
+/* ============================= */
+
+.cadastro-card {
+  max-width: 450px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.cadastro-top-bar {
+  height: 30px;
+  background-color: #1F3C4C; /* amarelo */
+  border-radius: 6px;
+}
+
+.cadastro-btn {
+  background-color: #C9A66B;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 10px 30px;
+  transition: 0.3s;
+}
+
+.cadastro-btn:hover {
+  background-color: #868B9F;
+}
+
+/* Botão de mostrar/ocultar senha */
+.toggle-password {
+  position: absolute;
+  top: 38px;
+  right: 10px;
+  border-radius: 50%;
+  padding: 2px 8px;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  .cadastro-card {
+    padding: 20px;
+  }
+}
+
+/* ============================= */
+/* Fim do Estilo da Página de Cadastro */
+/* ============================= */
+
+
