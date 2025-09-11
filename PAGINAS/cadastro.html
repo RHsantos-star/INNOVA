@@ -7,63 +7,64 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
        <link rel="stylesheet" href="../CSS/style.css">
   </head>
-  <body>
-      <!-- Inicio do Container de Cadastro -->
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-      <div class="card p-4 shadow cadastro-card">
-        
-        <!-- Barra superior amarela -->
-        <div class="cadastro-top-bar mb-4"></div>
-        
-        <h3 class="text-center mb-4">Cadastro</h3>
-        
-        <form>
-          <!-- Nome -->
-          <div class="mb-3">
-            <label class="form-label">Nome:</label>
-            <input type="text" class="form-control" placeholder="Digite seu nome" required>
-          </div>
-
-          <!-- Telefone -->
-          <div class="mb-3">
-            <label class="form-label">Telefone:</label>
-            <input type="text" class="form-control" id="telefone" placeholder="(00) 00000-0000" required>
-          </div>
-
-          <!-- CPF -->
-          <div class="mb-3">
-            <label class="form-label">CPF:</label>
-            <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
-          </div>
-
-          <!-- Email -->
-          <div class="mb-3">
-            <label class="form-label">E-mail:</label>
-            <input type="email" class="form-control" placeholder="Digite seu e-mail" required>
-          </div>
-
-          <!-- Senha -->
-          <div class="mb-3 position-relative">
-            <label class="form-label">Senha:</label>
-            <input type="password" class="form-control" id="senha" required>
-            <button type="button" class="btn btn-sm btn-outline-secondary toggle-password" data-target="senha">👁</button>
-          </div>
-
-          <!-- Confirmar Senha -->
-          <div class="mb-4 position-relative">
-            <label class="form-label">Confirmar Senha:</label>
-            <input type="password" class="form-control" id="confirmarSenha" required>
-            <button type="button" class="btn btn-sm btn-outline-secondary toggle-password" data-target="confirmarSenha">👁</button>
-          </div>
-
-          <!-- Botão -->
-          <div class="text-center">
-            <button type="submit" class="btn cadastro-btn">Cadastrar</button>
-          </div>
-        </form>
+  <body class="body-cadastro">
+     <!-- Inicio do Container de Cadastro -->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-4 shadow cadastro-card w-100">
+    
+    <!-- Barra superior amarela -->
+    <div class="cadastro-top-bar mb-4"></div>
+    
+    <h3 class="text-center mb-4">Cadastro</h3>
+    
+    <form>
+      <!-- Nome -->
+      <div class="mb-3">
+        <label class="form-label">Nome:</label>
+        <input type="text" class="form-control" placeholder="Digite seu nome" required>
       </div>
-    </div>
-    <!-- Fim do Container de Cadastro -->
+
+      <!-- Telefone -->
+      <div class="mb-3">
+        <label class="form-label">Telefone:</label>
+        <input type="text" class="form-control" id="telefone" placeholder="(00) 00000-0000" required>
+      </div>
+
+      <!-- CPF -->
+      <div class="mb-3">
+        <label class="form-label">CPF:</label>
+        <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">E-mail:</label>
+        <input type="email" class="form-control" placeholder="Digite seu e-mail" required>
+      </div>
+
+      <!-- Senha -->
+      <div class="mb-3 position-relative">
+        <label class="form-label">Senha:</label>
+        <input type="password" class="form-control" id="senha" required>
+        <button type="button" class="btn btn-sm btn-outline-secondary toggle-password" data-target="senha">👁</button>
+      </div>
+
+      <!-- Confirmar Senha -->
+      <div class="mb-4 position-relative">
+        <label class="form-label">Confirmar Senha:</label>
+        <input type="password" class="form-control" id="confirmarSenha" required>
+        <button type="button" class="btn btn-sm btn-outline-secondary toggle-password" data-target="confirmarSenha">👁</button>
+      </div>
+
+      <!-- Botão -->
+      <div class="text-center">
+        <button type="submit" class="btn cadastro-btn">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Fim do Container de Cadastro -->
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

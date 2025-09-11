@@ -3,132 +3,102 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>FAQ</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
      <link rel="stylesheet" href="../CSS/style.css">
   </head>
   <body>
-     <!-- Menu Superior -->
-   <header class="header">
+   <!-- ================= INÍCIO DO HEADER ================= -->
+    <header class="header header-dark">
       <div class="logo">
-         <img src="../IMG/logoLoja.png" alt="Logo INNOVA" />
+        <img src="../IMG/logoLoja.png" alt="Logo INNOVA" />
       </div>
       <div class="search-box">
-         <input type="text" placeholder="Buscar...">
+        <input type="text" placeholder="Buscar...">
       </div>
       <div class="icons">
-         <img src="../IMG/Chat.png" alt="Chat">
-         <img src="../IMG/Carrinho.png" alt="Carrinho">
-         <img src="../IMG/Usuario.png" alt="Usuario">
+        <img src="../IMG/Chat.png" alt="Chat">
+        <img src="../IMG/Carrinho.png" alt="Carrinho">
+        <img src="../IMG/Usuario.png" alt="Usuario">
       </div>
+    </header>
+    <!-- ================= FIM DO HEADER ================= -->
 
-   </header>
+    <!-- ================= INÍCIO DO CONTEÚDO ================= -->
+    <main class="container my-5">
+      <h1 class="text-center mb-4">Dúvidas Frequentes</h1>
 
-      <footer class="footer">
+      <div class="accordion" id="faqAccordion">
 
-      <!-- Area que os textos ficam do lado Esquerdo -->
+        <!-- Pergunta 1 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              Como funciona a compra de móveis planejados?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Nosso processo de compra inclui consulta inicial, projeto personalizado, orçamento detalhado e instalação final feita por profissionais especializados.
+            </div>
+          </div>
+        </div>
+
+        <!-- Pergunta 2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              É possível fazer um orçamento online?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Sim! Você pode enviar as medidas do ambiente e escolher os materiais para receber um orçamento inicial online.
+            </div>
+          </div>
+        </div>
+
+        <!-- Pergunta 3 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+              Vocês oferecem visita técnica para medição?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Sim, realizamos visita técnica gratuita para garantir que o projeto seja feito com as medidas corretas.
+            </div>
+          </div>
+        </div>
+
+        <!-- Você pode repetir esse padrão para todas as outras perguntas -->
+      </div>
+    </main>
+    <!-- ================= FIM DO CONTEÚDO ================= -->
+
+    <!-- ================= INÍCIO DO RODAPÉ ================= -->
+    <footer class="footer fixed-bottom">
       <div class="footer-texto">
-         <p> Desenvolvido por Rhauan dos Santos </p>
+        <p> Desenvolvido por Rhauan dos Santos </p>
       </div>
-
-      <!-- Area direita com redes socais -->
       <div class="footer-direito">
-         <p> Conheça nossas redes sociais </p>
-         <div class="icons-sociais">
-            <a href="">
-               <img src="../IMG/Instagram.png" alt="Instagram">
-            </a>
-            <a href="">
-               <img src="../IMG/Facebook.png" alt="Facebook">
-            </a>
-            <a href="">
-               <img src="../IMG/Whatsapp.png" alt="Whatsapp">
-            </a>
-            <a href="">
-               <img src="../IMG/TikTok.png" alt="TikTok">
-            </a>
-         </div>
+        <p> Conheça nossas redes sociais </p>
+        <div class="icons-sociais">
+          <a href=""><img src="../IMG/Instagram.png" alt="Instagram"></a>
+          <a href=""><img src="../IMG/Facebook.png" alt="Facebook"></a>
+          <a href=""><img src="../IMG/Whatsapp.png" alt="Whatsapp"></a>
+          <a href=""><img src="../IMG/TikTok.png" alt="TikTok"></a>
+        </div>
       </div>
+    </footer>
+    <!-- ================= FIM DO RODAPÉ ================= -->
 
-   </footer>
-
-   <!-- Inicio do arquivo: faq.html -->
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dúvidas Frequentes</title>
-  <link rel="stylesheet" href="faq.css">
-</head>
-<body>
-  <!-- Inicio do Header -->
-  <header class="faq-header">
-    <div class="search-bar">
-      <input type="text" placeholder="Buscar...">
-    </div>
-    <div class="icons">
-      <img src="IMG/chat.png" alt="Chat">
-      <img src="IMG/cart.png" alt="Carrinho">
-      <img src="IMG/user.png" alt="Usuário">
-    </div>
-  </header>
-  <!-- Fim do Header -->
-
-  <!-- Inicio do Conteúdo -->
-  <main class="faq-container">
-    <h1>Dúvidas Frequentes</h1>
-
-    <div class="faq-item">
-      <span>Como funciona a compra de móveis planejados?</span>
-      <span class="arrow">⌄</span>
-    </div>
-
-    <div class="faq-item">
-      <span>É possível fazer um orçamento online?</span>
-      <span class="arrow">⌄</span>
-    </div>
-
-    <div class="faq-item">
-      <span>Vocês oferecem visita técnica para medição?</span>
-      <span class="arrow">⌄</span>
-    </div>
-
-    <div class="faq-item">
-      <span>Qual é o prazo de entrega e instalação?</span>
-      <span class="arrow">⌄</span>
-    </div>
-
-    <div class="faq-item">
-      <span>Quais formas de pagamento vocês aceitam?</span>
-      <span class="arrow">⌄</span>
-    </div>
-
-    <div class="faq-item">
-      <span>Posso alterar o projeto depois de aprovado?</span>
-      <span class="arrow">⌄</span>
-    </div>
-
-    <div class="faq-item">
-      <span>Os móveis têm garantia?</span>
-      <span class="arrow">⌄</span>
-    </div>
-
-    <div class="faq-item">
-      <span>Posso acompanhar meu pedido?</span>
-      <span class="arrow">⌄</span>
-    </div>
-
-    <div class="faq-item">
-      <span>Como entro em contato com o suporte?</span>
-      <span class="arrow">⌄</span>
-    </div>
-  </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  
   <!-- Fim do Conteúdo -->
 </body>
 </html>
-<!-- Fim do arquivo: faq.html -->
 
-                                                                                             
-  </body>
-</html>
+
+ 

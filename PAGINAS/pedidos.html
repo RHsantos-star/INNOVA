@@ -1,56 +1,106 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-       <link rel="stylesheet" href="../CSS/style.css">
-  </head>
-  <body>
-     <!-- Menu Superior -->
-   <header class="header">
-      <div class="logo">
-         <img src="../IMG/logoLoja.png" alt="Logo INNOVA" />
-      </div>
-      <div class="search-box">
-         <input type="text" placeholder="Buscar...">
-      </div>
-      <div class="icons">
-         <img src="../IMG/Chat.png" alt="Chat">
-         <img src="../IMG/Carrinho.png" alt="Carrinho">
-         <img src="../IMG/Usuario.png" alt="Usuario">
-      </div>
 
-   </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pedidos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
 
-      <footer class="footer">
+<body>
+  <!-- Menu Superior -->
+  <header class="header">
+    <div class="logo">
+      <img src="../IMG/logoLoja.png" alt="Logo INNOVA" />
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar...">
+    </div>
+    <div class="icons">
+      <img src="../IMG/Chat.png" alt="Chat">
+      <img src="../IMG/Carrinho.png" alt="Carrinho">
+      <img src="../IMG/Usuario.png" alt="Usuario">
+    </div>
 
-      <!-- Area que os textos ficam do lado Esquerdo -->
-      <div class="footer-texto">
-         <p> Desenvolvido por Rhauan dos Santos </p>
+  </header>
+
+
+
+  <!-- Inicio das Abas -->
+  <section class="tabs">
+    <button class="tab ativo">MEUS PEDIDOS</button>
+    <button class="tab">3 PEDIDOS REALIZADOS</button>
+    <button class="tab">EXTRATO</button>
+  </section>
+  <!-- Fim das Abas -->
+
+  <!-- Inicio dos Recentes -->
+  <section class="recentes">
+    <h2>RECENTE:</h2>
+    <div class="recentes-lista">
+      <img src="IMG/recent1.jpg" alt="Produto 1">
+      <img src="IMG/recent2.jpg" alt="Produto 2">
+      <img src="IMG/recent3.jpg" alt="Produto 3">
+    </div>
+  </section>
+  <!-- Fim dos Recentes -->
+
+  <!-- Inicio das Recomendações -->
+  <section class="recomendacoes">
+    <h2>RECOMENDAÇÕES:</h2>
+    <div class="grid">
+      <div class="produto">
+        <img src="IMG/produto1.jpg" alt="Armário 1">
+        <p>ARMARIO COMPLETO PARA COZINHA<br>1267X390</p>
+        <span class="preco">R$842,91</span>
       </div>
-
-      <!-- Area direita com redes socais -->
-      <div class="footer-direito">
-         <p> Conheça nossas redes sociais </p>
-         <div class="icons-sociais">
-            <a href="">
-               <img src="../IMG/Instagram.png" alt="Instagram">
-            </a>
-            <a href="">
-               <img src="../IMG/Facebook.png" alt="Facebook">
-            </a>
-            <a href="">
-               <img src="../IMG/Whatsapp.png" alt="Whatsapp">
-            </a>
-            <a href="">
-               <img src="../IMG/TikTok.png" alt="TikTok">
-            </a>
-         </div>
+      <div class="produto">
+        <img src="IMG/produto2.jpg" alt="Armário 2">
+        <p>ARMARIO COM PIA E GELADEIRA<br>2534X135</p>
+        <span class="preco">R$3721,64</span>
       </div>
+      <div class="produto">
+        <img src="IMG/produto3.jpg" alt="Armário 3">
+        <p>ARMARIO COM PIA E MICRO-ONDAS<br>1346X84</p>
+        <span class="preco">R$2834,75</span>
+      </div>
+      <div class="produto">
+        <img src="IMG/produto4.jpg" alt="Armário 4">
+      </div>
+    </div>
+  </section>
+  <!-- Rodapé -->
+  <footer class="footer fixed-bottom">
 
-   </footer>
-                                                                                             
-  </body>
+    <!-- Area que os textos ficam do lado Esquerdo -->
+    <div class="footer-texto">
+      <p> Desenvolvido por Rhauan dos Santos </p>
+    </div>
+
+    <!-- Area direita com redes socais -->
+    <div class="footer-direito">
+      <p> Conheça nossas redes sociais </p>
+      <div class="icons-sociais">
+        <a href="">
+          <img src="../IMG/Instagram.png" alt="Instagram">
+        </a>
+        <a href="">
+          <img src="../IMG/Facebook.png" alt="Facebook">
+        </a>
+        <a href="">
+          <img src="../IMG/Whatsapp.png" alt="Whatsapp">
+        </a>
+        <a href="">
+          <img src="../IMG/TikTok.png" alt="TikTok">
+        </a>
+      </div>
+    </div>
+
+  </footer>
+
+</body>
+
 </html>
