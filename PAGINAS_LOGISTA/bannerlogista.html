@@ -26,6 +26,31 @@
 
 
   <!-- Fim do Header -->
+   <form id="formBanner" action="../PHP/cadastrar_banner.php" method="post" enctype="multipart/form-data">
+  <input type="text" name="descricao" placeholder="Descrição" required>
+  <input type="date" name="data_inicio" required>
+  <input type="date" name="data_validade" required>
+  <input type="text" name="link" placeholder="Link (opcional)">
+  <select name="idCategoriaProduto" id="idCategoriaProduto"></select>
+  <input type="file" name="imagem" accept="image/*" required>
+  <button type="submit">Cadastrar</button>
+</form>
+
+<input type="text" id="buscaBanner" placeholder="Buscar banner...">
+
+<table>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Início</th>
+      <th>Validade</th>
+      <th>Link</th>
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody id="listaBanners"></tbody>
+</table>
 
 <!-- Inicio Conteúdo -->
 <main class="banner-container">

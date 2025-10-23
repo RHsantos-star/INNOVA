@@ -60,11 +60,22 @@ body {
 
 /* Mini banners */
 .mini-banner {
-    border-radius: 100px;
     background-color: #C9A66B;
     height: 50px;
 }
 .banner-thumb {
     height: 120px;
     background-color: #C9A66B;
+}
+/* Botão EDITAR branco */
+.btn-outline-white,
+.btn-outline-secondary.edit-btn {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.btn-outline-white:hover,
+.btn-outline-secondary.edit-btn:hover {
+    background-color: #ffffff !important;
+    color: #1F3C4C !important;
 }
