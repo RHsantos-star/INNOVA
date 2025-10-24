@@ -1,104 +1,58 @@
-/*Tela de cadastro de produtos,categorias e marcas*/
+/* ============================
+   Estilo do Painel Logista
+   ============================ */
 
-/* Espaçamento geral */
-main .card { 
-    border-radius: 0.75rem;
- }
-
-/* Miniaturas (marcas) */
-.brand-thumb {
-  width: 140px;
-  height: 140px;
-  background-color: #f8f9fa;
-}
-.logo-sample {
-  width: 48px;
-  height: 48px;
-  background: #e9ecef;
-  border: 1px solid #dee2e6;
+/* Card e cores principais */
+.card-header {
+    background-color: #1F3C4C;
+    color: #C9A66B;
 }
 
-/* Miniaturas (produtos) */
-.product-thumb {
-  width: 100%;
-  height: 180px;
-  background-color: #f8f9fa;
+.card {
+    background-color: #868B9F;
+    color: #fff;
 }
 
-/* Links do menu ao passar o mouse */
-.navbar .nav-link:hover { opacity: 0.9; }
-.navbar{
-    background-color: #7b139e;
+/* Botões */
+.btn-primary {
+    background-color: #1F3C4C;
+    border-color: #1F3C4C;
 }
 
-/* Ajustes responsivos leves */
-@media (max-width: 576px) {
-  .brand-thumb { width: 100%; height: 160px; }
-  .product-thumb { height: 160px; }
+.btn-outline-secondary {
+    color: #C9A66B;
+    border-color: #C9A66B;
 }
 
-/*frete e formas de pagamento do logista*/
-.table td, .table th { vertical-align: middle; }
+.btn-outline-danger {
+    color: #C9A66B;
+    border-color: #C9A66B;
+}
 
-.header {
-    background-color: #7b1fa2;
-    /* cor de fundo*/
-    padding: 10px 20px;
-    /*tamanho da área*/
-    align-items: center;
-    /* alinhar no centro*/
+/* Badges de categorias/produtos */
+.badge {
+    background-color: #1F3C4C;
+    color: #C9A66B;
+}
+
+/* Miniaturas de produtos */
+.product-thumb, .prod-thumb {
+    height: 100px;
+    background-color: #ddd;
     display: flex;
-    
-    /*redimensionar*/
-    justify-content:space-between;
-    /*colocar os espaços ao lado*/
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
+/* Pré-visualização de imagens */
+.product-thumb img, .prod-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Rodapé */
 .footer {
-    background-color: #cba3c9;
-    /*cor de fundo*/
-    padding: 15px 40px 15px 40px;
-    /*dimensão*/
-    color: white;
-    /*cor do texto*/
-    font-family: Arial, Helvetica, sans-serif;
-    /*fonte dos textos*/
-
-}
-
-/* Tabela de produtos */
-.produtos-tabela th, .produtos-tabela td {
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.produtos-tabela td:nth-child(3), /* Nome */
-.produtos-tabela td:nth-child(5)  /* Categorias */ {
-  white-space: normal;
-}
-
-/* Miniatura de produto (quando não há imagem real) */
-.prod-thumb {
-  width: 56px;
-  height: 56px;
-  background-image: repeating-linear-gradient(45deg, #f8f9fa, #f8f9fa 8px, #eef1f4 8px, #eef1f4 16px);
-}
-
-/* Cabeçalho fixo em telas altas (opcional) */
-@media (min-height: 700px) {
-  .table-responsive {
-    max-height: 420px;
-    overflow-y: auto;
-  }
-  .table-responsive thead th {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-  }
-}
-
-/* Botões desabilitados de ações (apenas decorativos no HTML puro) */
-.btn[aria-disabled="true"] {
-  pointer-events: none;
-  opacity: .6;
+    background-color: #f8f9fa;
+    color: #6c757d;
 }
