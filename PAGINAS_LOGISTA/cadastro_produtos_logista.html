@@ -10,357 +10,223 @@
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/produtoslogista.css" />
+    <link rel="stylesheet" href="../CSS_LOGISTA/produtoslogista.css" />
   </head>
   <body>
 
-    <!-- 1) Menu de navegação -->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
-      <div class="container">
-        <a class="navbar-brand fw-bold" href="#">PetAmigo</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false"
-          aria-label="Alternar navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+ <!-- 1) Menu de navegação -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">PetAmigo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false"
+      aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="topNav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-2">
-            <li class="nav-item"><a class="nav-link "
-                href="home_lojista.html">Relatórios</a></li>
-            <li class="nav-item"><a class="nav-link active"
-                href="cadastro_produtos_logista.html">Produtos</a></li>
-            <li class="nav-item"><a class="nav-link "
-                href="promocoes_logista.html">Promoções</a></li>
-            <li class="nav-item"><a class="nav-link  "
-                href="frete_pagamento_logista.html">Pagamentos e Fretes</a></li>
-            <li class="nav-item"><a class="nav-link "
-                href="chat_logista.html">Conversas</a></li>
+    <div class="collapse navbar-collapse" id="topNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="home_lojista.html">Relatórios</a></li>
+        <li class="nav-item"><a class="nav-link active" href="cadastro_produtos_logista.html">Produtos</a></li>
+        <li class="nav-item"><a class="nav-link" href="promocoes_logista.html">Promoções</a></li>
+        <li class="nav-item"><a class="nav-link" href="frete_pagamento_logista.html">Pagamentos e Fretes</a></li>
+        <li class="nav-item"><a class="nav-link" href="chat_logista.html">Conversas</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-          </ul>
-        </div>
+<main class="container my-4">
+
+  <!-- 2) Categorias -->
+  <section id="categorias" class="mb-4">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white">
+        <h5 class="m-0">Cadastro de Categorias</h5>
       </div>
-    </nav>
+      <div class="card-body">
+        <form action="../php/cadastro_categorias.php" method="post" class="row g-3">
+          <input type="hidden" name="acao" id="catAcao">
+          <input type="hidden" name="id" id="catId">
 
-    <main class="container my-4">
-
-      <!-- 2) Categorias -->
-      <section id="categorias" class="mb-4">
-        <div class="card shadow-sm">
-          <div class="card-header bg-white">
-            <h5 class="m-0">Cadastro de Categorias</h5>
-          </div>
-          <div class="card-body">
-
-            <form action="../php/cadastro_categorias.php" method="post"
-              class="row g-3">
-
-              <input type="hidden" name="acao" id="catAcao">
-              <input type="hidden" name="id" id="catId">
-
-              <div class="col-md-6">
-                <label for="catNome" class="form-label">Nome da
-                  categoria</label>
-                <input type="text" name="nomecategoria" class="form-control"
-                  id="catNome" placeholder="Ex.: Eletrônicos" />
-              </div>
-              <div class="col-md-6">
-                <label for="pPreco" class="form-label">Desconto em toda
-                  categoria</label>
-                <input name="desconto" type="number" id="catDesconto"
-                  class="form-control" min="0" step="0.01" placeholder="0,00" />
-              </div>
-              <div class="col-12 d-flex gap-2">
-                <button type="submit" class="btn btn-primary"
-                  id="catBtnCadastrar">Cadastrar</button>
-                <button type="button" class="btn btn-outline-secondary"
-                  id="catBtnEditar">Editar</button>
-                <button type="button" class="btn btn-outline-danger"
-                  id="catBtnExcluir">Excluir</button>
-              </div>
-
-              <div class="col-12 col-md-6">
-                <label for="catLista" class="form-label">Categorias
-                  criadas</label>
-
-                <select id="pCategoria" class="form-select">
-                  <option selected>Selecione...</option>
-                </select>
-
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3) Marcas -->
-      <section id="marcas" class="mb-4">
-        <div class="card shadow-sm">
-          <div class="card-header bg-white">
-            <h5 class="m-0">Cadastro de Marcas</h5>
-          </div>
-          <div class="card-body">
-
-            <form class="row g-3" action="../PHP/cadastro_marcas.php"
-              method="post" enctype="multipart/form-data">
-
-              <input type="hidden" name="acao" id="marcaAcao">
-              <input type="hidden" name="id" id="marcaId">
-              
-              <div class="col-12 col-md-3 text-center">
-                <div
-                  class="brand-thumb border rounded d-flex align-items-center justify-content-center overflow-hidden">
-                  <img id="brandPreview" alt="Prévia da marca"
-                    class="img-fluid d-none" />
-                  <span id="brandPlaceholder" class="text-muted">Prévia da
-                    imagem</span>
-                </div>
-                <label for="brandImg" class="form-label mt-2">Imagem da
-                  marca</label>
-                <input class="form-control" name="imagemmarca" type="file"
-                  id="brandImg" accept="image/*" />
-              </div>
-
-              <div class="col-12 col-md-9">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="brandNome" class="form-label">Nome da
-                      marca</label>
-                    <input type="text" name="nomemarca" id="brandNome"
-                      class="form-control" placeholder="Ex.: TechPro" />
-                  </div>
-                  <div class="col-12 d-flex gap-2">
-                    <button type="submit" class="btn btn-primary"
-                      id="marcaBtnCadastrar">Cadastrar</button>
-                   
-                    <button type="button" class="btn btn-outline-danger"
-                      id="marcaBtnExcluir">Excluir</button>
-                  </div>
-
-                  <div class="col-12">
-                    <label class="form-label">Marcas cadastradas</label>
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>Logo</th>
-                            <th>Nome</th>
-                            <th style="text-align:right">Ações</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tabelaMarcas"></tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4) Produtos -->
-      <section id="produtos" class="mb-5">
-        <div class="card shadow-sm">
-          <div class="card-header bg-white">
-            <h5 class="m-0">Cadastro de Produtos</h5>
-          </div>
-          <div class="card-body">
-            <form action="../PHP/cadastro_produtos.php" method="post"
-              class="row g-3" enctype="multipart/form-data">
-
-              <input type="hidden" name="acao" id="marcaAcao">
-              <input type="hidden" name="id" id="marcaId">
-
-              <!-- Imagens (3) -->
-              <div class="col-12">
-                <label class="form-label">Imagens do produto (3)</label>
-                <div class="row g-3">
-                  <div class="col-12 col-sm-4">
-                    <div
-                      class="product-thumb border rounded d-flex align-items-center justify-content-center overflow-hidden">
-                      <img id="pImg1Prev" class="img-fluid d-none"
-                        alt="Prévia 1" />
-                      <span id="pImg1Ph" class="text-muted">Prévia 1</span>
-                    </div>
-                    <input name="imgproduto1" class="form-control mt-2"
-                      type="file" id="pImg1" accept="image/*" />
-                  </div>
-                  <div class="col-12 col-sm-4">
-                    <div
-                      class="product-thumb border rounded d-flex align-items-center justify-content-center overflow-hidden">
-                      <img id="pImg2Prev" class="img-fluid d-none"
-                        alt="Prévia 2" />
-                      <span id="pImg2Ph" class="text-muted">Prévia 2</span>
-                    </div>
-                    <input name="imgproduto2" class="form-control mt-2"
-                      type="file" id="pImg2" accept="image/*" />
-                  </div>
-                  <div class="col-12 col-sm-4">
-                    <div
-                      class="product-thumb border rounded d-flex align-items-center justify-content-center overflow-hidden">
-                      <img id="pImg3Prev" class="img-fluid d-none"
-                        alt="Prévia 3" />
-                      <span id="pImg3Ph" class="text-muted">Prévia 3</span>
-                    </div>
-                    <input name="imgproduto3" class="form-control mt-2"
-                      type="file" id="pImg3" accept="image/*" />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Dados do produto -->
-              <div class="col-md-6">
-                <label for="pNome" class="form-label">Nome</label>
-                <input name="nomeproduto" type="text" id="pNome"
-                  class="form-control" placeholder="Ex.: Fone Bluetooth X200" />
-              </div>
-              <div class="col-md-3">
-                <label for="pQtd" class="form-label">Quantidade</label>
-                <input name="quantidade" type="number" id="pQtd"
-                  class="form-control" min="0" step="1" />
-              </div>
-              <div class="col-md-3">
-                <label for="pPreco" class="form-label">Preço</label>
-                <input name="preco" type="number" id="pPreco"
-                  class="form-control"
-                  min="0" step="0.01" placeholder="0,00" />
-              </div>
-
-              <div class="col-md-3">
-                <label for="pTamanho" class="form-label">Tamanho</label>
-                <input name="tamanho" type="text" id="pTamanho"
-                  class="form-control"
-                  placeholder="Ex.: P, M, G ou dimensões" />
-              </div>
-              <div class="col-md-3">
-                <label for="pCor" class="form-label">Cor</label>
-                <input name="cor" type="text" id="pCor" class="form-control"
-                  placeholder="Ex.: Preto" />
-              </div>
-              <div class="col-md-3">
-                <label for="pCodigo" class="form-label">Código / SKU</label>
-                <input name="codigo" type="number" id="pCodigo"
-                  class="form-control" />
-              </div>
-              <div class="col-md-3">
-                <label for="pPrecoPromo" class="form-label">Preço
-                  promocional</label>
-                <input name="precopromocional" type="number" id="pPrecoPromo"
-                  class="form-control" min="0" step="0.01"
-                  placeholder="Opcional" />
-              </div>
-              <div class="col-md-9">
-                <label for="pDescricao" class="form-label">Descrição</label>
-                <input name="descricao" type="text" id="pDescricao"
-                  class="form-control" min="0" step="0.01" required />
-              </div>
-
-              <div class="col-md-3">
-                <label name="categoriaproduto" for="pCategoria"
-                  class="form-label">Categoria</label>
-                <select id="prodcat" class="form-select">
-                  <option selected>Selecione...</option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <label for="pMarca" class="form-label">Marca</label>
-                <select name="marcaproduto" id="proMarca" class="form-select">
-                  <option selected>Selecione...</option>
-
-                </select>
-              </div>
-
-              <div class="col-12 d-flex gap-2">
-                <button type="submit" class="btn btn-primary"
-                  id="marcaBtnCadastrar">Cadastrar</button>
-                <button type="button" class="btn btn-outline-secondary"
-                  id="marcaBtnEditar">Editar</button>
-                <button type="button" class="btn btn-outline-danger"
-                  id="marcaBtnExcluir">Excluir</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-      <!-- Lista de Produtos -->
-      <section class="mt-4" aria-labelledby="titulo-lista-produtos">
-        <div class="card shadow-sm">
-          <div
-            class="card-header bg-white d-flex flex-wrap align-items-center justify-content-between gap-2">
-            <h5 id="titulo-lista-produtos" class="m-0">Produtos cadastrados</h5>
-            <!-- Campo de busca decorativo (sem JS) -->
-            <form class="d-inline-block" role="search"
-              aria-label="Busca na tabela (decorativa)">
-              <input type="search" class="form-control form-control-sm"
-                placeholder="Buscar (decorativo)" disabled>
-            </form>
+          <div class="col-md-6">
+            <label for="catNome" class="form-label">Nome da categoria</label>
+            <input type="text" name="nomecategoria" class="form-control" id="catNome" placeholder="Ex.: Banho e Tosa" />
           </div>
 
-          <div class="table-responsive">
-            <table class="table table-striped align-middle">
-              <thead>
-                <tr>
-
-                  <th>ID</th>
-                  <th>Imagem</th>
-                  <th>Nome</th>
-                  <th>Marca</th>
-                  <th>Categoria</th>
-                  <th>Preço</th>
-                  <th>Promoção</th>
-                  <th>Qtd</th>
-                </tr>
-              </thead>
-              <tbody id="tabelaProdutos"></tbody>
-            </table>
+          <div class="col-md-6">
+            <label for="catDesconto" class="form-label">Desconto (%)</label>
+            <input type="number" name="desconto" id="catDesconto" class="form-control" min="0" step="0.01" placeholder="0,00" />
           </div>
-        </div>
-      </section>
 
-      <!-- Rodapé (igual ao anterior) -->
-      <footer class="footer py-4  border-top">
-        <div class="container text-center small text-muted">
-          © <span id="year"></span> Minha Loja — Painel Administrativo
-        </div>
-      </footer>
+          <div class="col-12 d-flex gap-2">
+            <button type="submit" class="btn btn-primary" id="catBtnCadastrar">Cadastrar</button>
+            <button type="button" class="btn btn-outline-secondary" id="catBtnEditar">Editar</button>
+            <button type="button" class="btn btn-outline-danger" id="catBtnExcluir">Excluir</button>
+          </div>
 
-      <!-- Bootstrap bundle -->
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+          <div class="col-12 col-md-6">
+            <label for="pCategoria" class="form-label">Categorias criadas</label>
+            <select id="categoriaLista" class="form-select">
+              <option selected>Selecione...</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-      <!-- JS opcional: apenas para prévias de imagens e ano do rodapé -->
-      <script>
-    const map = [
-      { input: 'brandImg', img: 'brandPreview', ph: 'brandPlaceholder' },
-      { input: 'pImg1',    img: 'pImg1Prev',    ph: 'pImg1Ph' },
-      { input: 'pImg2',    img: 'pImg2Prev',    ph: 'pImg2Ph' },
-      { input: 'pImg3',    img: 'pImg3Prev',    ph: 'pImg3Ph' },
-    ];
-    map.forEach(({input, img, ph}) => {
-      const fileInput = document.getElementById(input);
-      const imgEl = document.getElementById(img);
-      const phEl = document.getElementById(ph);
-      if (!fileInput) return;
-      fileInput.addEventListener('change', (e) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          imgEl.src = ev.target.result;
-          imgEl.classList.remove('d-none');
-          if (phEl) phEl.classList.add('d-none');
-        };
-        reader.readAsDataURL(file);
-      });
+  <!-- 3) Produtos -->
+  <section id="produtos" class="mb-5">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white">
+        <h5 class="m-0">Cadastro de Produtos</h5>
+      </div>
+      <div class="card-body">
+        <form action="../PHP/cadastro_produtos.php" method="post" class="row g-3" enctype="multipart/form-data">
+          <input type="hidden" name="acao" id="prodAcao">
+          <input type="hidden" name="id" id="prodId">
+
+          <!-- Imagem do produto -->
+          <div class="col-md-4 text-center">
+            <div class="product-thumb border rounded d-flex align-items-center justify-content-center overflow-hidden">
+              <img id="pImgPrev" class="img-fluid d-none" alt="Prévia do produto" />
+              <span id="pImgPh" class="text-muted">Prévia da imagem</span>
+            </div>
+            <label for="pImg" class="form-label mt-2">Imagem do produto</label>
+            <input name="imagem" type="file" class="form-control" id="pImg" accept="image/*" />
+          </div>
+
+         <!-- Dados do produto -->
+<div class="col-md-8">
+  <div class="row g-3">
+
+    <!-- Nome -->
+    <div class="col-md-6">
+      <label for="pNome" class="form-label">Nome</label>
+      <input name="nome" type="text" id="pNome" class="form-control" placeholder="Ex.: Ração Premium" required />
+    </div>
+
+    <!-- Preço -->
+    <div class="col-md-3">
+      <label for="pPreco" class="form-label">Preço (R$)</label>
+      <input name="preco" type="number" id="pPreco" class="form-control" min="0" step="0.01" placeholder="0,00" required />
+    </div>
+
+    <!-- Desconto -->
+    <div class="col-md-3">
+      <label for="pDesconto" class="form-label">Desconto (%)</label>
+      <input name="desconto" type="number" id="pDesconto" class="form-control" min="0" step="0.01" placeholder="0,00" />
+    </div>
+
+    <!-- Tamanho -->
+    <div class="col-md-3">
+      <label for="pTamanho" class="form-label">Tamanho</label>
+      <input name="tamanho" type="text" id="pTamanho" class="form-control" placeholder="Ex.: P, M, G, 1kg" />
+    </div>
+
+    
+
+    <!-- Categoria Relacional (idCategoriaProduto) -->
+    <div class="col-md-6">
+      <label for="prodCat" class="form-label">Categoria Relacionada</label>
+      <select name="idCategoriaProduto" id="prodCat" class="form-select">
+        <option selected disabled>Selecione...</option>
+      </select>
+    </div>
+
+    <!-- Descrição -->
+    <div class="col-md-12">
+      <label for="pDescricao" class="form-label">Descrição</label>
+      <textarea name="descricao" id="pDescricao" class="form-control" rows="3" placeholder="Descrição detalhada do produto" required></textarea>
+    </div>
+
+    
+
+    <!-- Status do Produto -->
+    <div class="col-md-6">
+      <label for="pStatus" class="form-label">Status do Produto</label>
+      <select name="statusproduto" id="pStatus" class="form-select">
+        <option value="1" selected>Ativo</option>
+        <option value="0">Inativo</option>
+      </select>
+    </div>
+
+    <!-- Botões -->
+    <div class="col-12 d-flex gap-2 mt-3">
+      <button type="submit" class="btn btn-primary" id="prodBtnCadastrar">Cadastrar</button>
+      <button type="button" class="btn btn-outline-secondary" id="prodBtnEditar">Editar</button>
+      <button type="button" class="btn btn-outline-danger" id="prodBtnExcluir">Excluir</button>
+    </div>
+
+  </div>
+</div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de Produtos -->
+  <section class="mt-4" aria-labelledby="titulo-lista-produtos">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <h5 id="titulo-lista-produtos" class="m-0">Produtos cadastrados</h5>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Imagem</th>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+              <th>Desconto</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaProdutos"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="footer py-4 border-top">
+    <div class="container text-center small text-muted">
+      © <span id="year"></span> Minha Loja — Painel Administrativo
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- JS para prévia de imagem e ano -->
+  <script>
+    const fileInput = document.getElementById('pImg');
+    const imgPrev = document.getElementById('pImgPrev');
+    const imgPh = document.getElementById('pImgPh');
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        imgPrev.src = ev.target.result;
+        imgPrev.classList.remove('d-none');
+        imgPh.classList.add('d-none');
+      };
+      reader.readAsDataURL(file);
     });
+
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-      <script src="../JS/produtos_logista.js"></script>
+  <!-- JS Produtos -->
+  <script src="../JS/produtos.js"></script>
       
     </body>
   </html>

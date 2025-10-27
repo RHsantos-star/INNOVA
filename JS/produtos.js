@@ -1,118 +1,97 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const formProduto = document.getElementById("formProduto");
-  const lista = document.getElementById("listaProdutos");
-  const selectCategoria = document.getElementById("idCategoriaProduto");
-  const buscaInput = document.getElementById("buscaProduto");
+function listarProdutos(tbodyId) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const tbody = document.getElementById(tbodyId);
+    const url   = '../PHP/cadastro_produtos.php?listar=1';
 
-  // Carregar categorias via JSON
-  const carregarCategorias = async () => {
-    try {
-      const resp = await fetch("php/listar_categorias.php"); // Retorna JSON de categorias
-      const categorias = await resp.json();
-      selectCategoria.innerHTML = '<option value="">Selecione...</option>';
-      categorias.forEach(cat => {
-        selectCategoria.innerHTML += `<option value="${cat.idCategoriaProduto}">${cat.nome} (${cat.desconto || 0}%)</option>`;
-      });
-    } catch (err) {
-      console.error("Erro ao carregar categorias:", err);
-    }
-  };
+    // Função de escape (evita XSS)
+    const esc = s => (s || '').replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
 
-  // Carregar produtos
-  const carregarProdutos = async (filtro = "") => {
-    try {
-      const resp = await fetch("php/cadastro_produtos.php"); // Retorna JSON de produtos
-      const produtos = await resp.json();
-      lista.innerHTML = "";
+    // Placeholder "SEM IMAGEM"
+    const ph = () => 'data:image/svg+xml;base64,' + btoa(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="60">
+         <rect width="100%" height="100%" fill="#eee"/>
+         <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+               font-family="sans-serif" font-size="10" fill="#999">SEM IMAGEM</text>
+       </svg>`
+    );
 
-      produtos
-        .filter(prod => prod.nome.toLowerCase().includes(filtro.toLowerCase()))
-        .forEach(prod => {
-          const imgSrc = prod.imagem ? `data:${prod.mime};base64,${prod.imagem}` : "";
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${prod.idProdutos}</td>
-            <td>${imgSrc ? `<img src="${imgSrc}" class="prod-thumb rounded border">` : ""}</td>
-            <td>${prod.nome}</td>
-            <td>${prod.marca || "-"}</td>
-            <td>${prod.categoria || "-"}</td>
-            <td class="text-end">${prod.quantidade || 0}</td>
-            <td class="text-end">R$ ${prod.preco?.toFixed(2) || "0,00"}</td>
-            <td class="text-end">${prod.desconto ? `R$ ${(prod.preco - (prod.preco*prod.desconto/100)).toFixed(2)}` : "—"}</td>
-            <td>${prod.codigo || "-"}</td>
-            <td class="text-end">
-              <button class="btn btn-sm btn-outline-secondary" onclick="editarProduto(${prod.idProdutos})">Editar</button>
-              <button class="btn btn-sm btn-outline-danger" onclick="excluirProduto(${prod.idProdutos})">Excluir</button>
-            </td>
-          `;
-          lista.appendChild(tr);
+    fetch(url)
+      .then(r => {
+        if (!r.ok) throw new Error(`Erro HTTP: ${r.status}`);
+        return r.json();
+      })
+      .then(data => {
+        tbody.innerHTML = '';
+
+        if (!data.ok || !data.produtos?.length) {
+          tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">Nenhum produto encontrado.</td></tr>`;
+          return;
+        }
+
+        data.produtos.forEach(p => {
+          const precoFmt = Number(p.preco).toLocaleString('pt-BR', {
+            style: 'currency', currency: 'BRL'
+          });
+          const descontoFmt = p.desconto ? `${p.desconto}%` : '-';
+          const statusFmt = p.statusproduto == 1 ? 'Ativo' : 'Inativo';
+          const imgSrc = p.imagem ? `data:image/jpeg;base64,${p.imagem}` : ph();
+
+          const linha = `
+            <tr>
+              <td>${p.idProdutos}</td>
+              <td><img src="${imgSrc}" alt="${esc(p.nome)}" width="64" height="48" class="rounded"></td>
+              <td>${esc(p.nome)}</td>
+              <td>${esc(p.categoria || '-')}</td>
+              <td>${precoFmt}</td>
+              <td>${descontoFmt}</td>
+              <td>${statusFmt}</td>
+            </tr>`;
+          tbody.insertAdjacentHTML('beforeend', linha);
         });
-    } catch (err) {
-      console.error("Erro ao carregar produtos:", err);
-    }
-  };
-
-  // Cadastrar ou atualizar produto
-  formProduto.addEventListener("submit", async e => {
-    e.preventDefault();
-    const dados = new FormData(formProduto);
-    try {
-      const resp = await fetch("php/cadastro_produtos.php", { method: "POST", body: dados });
-      const result = await resp.json();
-      alert(result.msg);
-      formProduto.reset();
-      carregarProdutos();
-    } catch (err) {
-      alert("Erro ao cadastrar produto.");
-      console.error(err);
-    }
+      })
+      .catch(err => {
+        console.error('Erro ao listar produtos:', err);
+        tbody.innerHTML = `<tr><td colspan="7" class="text-danger text-center">Erro ao carregar produtos.</td></tr>`;
+      });
   });
+}
 
-  // Busca em tempo real
-  if (buscaInput) {
-    buscaInput.addEventListener("input", e => {
-      carregarProdutos(e.target.value);
-    });
-  }
 
-  // Função global para editar produto
-  window.editarProduto = async (id) => {
+// Função para listar categorias (usada em selects de produtos, por exemplo)
+function listarcategorias(nomeid) {
+  // Função assíncrona autoexecutável (IIFE) para permitir uso de await
+  (async () => {
+    // Seleciona o elemento HTML informado no parâmetro (ex: um <select>)
+    const sel = document.querySelector(nomeid);
+
     try {
-      const resp = await fetch(`php/cadastro_produtos.php?id=${id}`);
-      const prod = await resp.json();
-      if (prod.ok) {
-        // Preenche o formulário com os dados do produto
-        formProduto.nomeproduto.value = prod.produto.nome;
-        formProduto.quantidade.value = prod.produto.quantidade;
-        formProduto.preco.value = prod.produto.preco;
-        formProduto.precopromocional.value = prod.produto.preco_promocional || "";
-        formProduto.tamanho.value = prod.produto.tamanho || "";
-        formProduto.cor.value = prod.produto.cor || "";
-        formProduto.codigo.value = prod.produto.codigo || "";
-        formProduto.idCategoriaProduto.value = prod.produto.idCategoriaProduto || "";
-        formProduto.marcaproduto.value = prod.produto.marca || "";
-        // Se quiser, carregar imagens também
-      }
-    } catch (err) {
-      console.error("Erro ao editar produto:", err);
-    }
-  };
+      // Faz a requisição ao PHP que retorna a lista de categorias
+      const r = await fetch("../PHP/cadastro_categorias.php?listar=1");
 
-  // Função global para excluir produto
-  window.excluirProduto = async (id) => {
-    if(!confirm("Deseja realmente excluir este produto?")) return;
-    try {
-      const resp = await fetch(`php/excluir_produto.php?id=${id}`, { method:"DELETE" });
-      const result = await resp.json();
-      alert(result.msg);
-      carregarProdutos();
-    } catch(err) {
-      console.error("Erro ao excluir produto:", err);
-      alert("Erro ao excluir produto.");
-    }
-  };
+      // Se o retorno do servidor for inválido (status diferente de 200), lança erro
+      if (!r.ok) throw new Error("Falha ao listar categorias!");
 
-  // Inicializa
-  carregarCategorias();
-  carregarProdutos();
-});
+      /*
+        Se os dados vierem corretamente, o conteúdo retornado pelo PHP 
+        (geralmente <option>...</option>) é inserido dentro do elemento HTML.
+        innerHTML é usado para injetar esse conteúdo diretamente no campo.
+      */
+      sel.innerHTML = await r.text();
+    } catch (e) {
+      // Caso haja erro (rede, servidor, etc.), exibe uma mensagem dentro do select
+      sel.innerHTML = "<option disable>Erro ao carregar</option>";
+    }
+  })();
+}
+
+
+
+
+
+
+listarcategorias("#categoriaLista");
+listarcategorias("#prodCat");
+// chama a função
+listarProdutos("tabelaProdutos");
