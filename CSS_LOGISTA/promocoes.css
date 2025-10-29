@@ -1,81 +1,38 @@
-/* ===================== CORES PERSONALIZADAS ===================== */
-body {
-    background-color: #f5f5f5;
-    color: #C9A66B;
-}
-
-/* Navbar */
-.navbar {
-    background-color: #1F3C4C;
-}
-.navbar .nav-link.active {
-    color: #C9A66B !important;
-}
-.navbar .nav-link:hover {
+.header, .navbar {
+    background-color: #1F3C4C !important;
     color: #C9A66B !important;
 }
 
-/* Cards */
-.card-header {
-    background-color: #1F3C4C;
-    color: #C9A66B;
-}
-.card-body {
-    background-color: #868B9F;
-    color: #C9A66B;
-}
-
-/* Botões */
-.btn-primary {
-    background-color: #1F3C4C;
-    border-color: #C9A66B;
-    color: #C9A66B;
-}
-.btn-outline-secondary {
-    border-color: #C9A66B;
-    color: #C9A66B;
-}
-.btn-outline-danger {
-    border-color: #C9A66B;
-    color: #C9A66B;
-}
-
-/* Tabelas */
-.table-light {
-    background-color: #1F3C4C;
-    color: #C9A66B;
-}
-.table td, .table th {
-    color: #C9A66B;
-}
-.table-hover tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Rodapé */
 .footer {
-    background-color: #1F3C4C;
-    color: #C9A66B;
+    background-color: #1F3C4C !important;
+    color: #C9A66B !important;
 }
 
-/* Mini banners */
-.mini-banner {
-    background-color: #C9A66B;
-    height: 50px;
-}
-.banner-thumb {
-    height: 120px;
-    background-color: #C9A66B;
-}
-/* Botão EDITAR branco */
-.btn-outline-white,
-.btn-outline-secondary.edit-btn {
-    color: #ffffff !important;
-    border-color: #ffffff !important;
+.card, .custom-card {
+    background-color: #868B9F !important;
+    border: 1px solid #1F3C4C !important;
+    color: #fff !important;
 }
 
-.btn-outline-white:hover,
-.btn-outline-secondary.edit-btn:hover {
-    background-color: #ffffff !important;
+.btn-primary {
+    background-color: #1F3C4C !important;
+    border-color: #1F3C4C !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background-color: #162b36 !important;
+}
+
+.btn-outline-secondary,
+.btn-outline-danger {
+    color: #C9A66B !important;
+    border-color: #C9A66B !important;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-danger:hover {
+    background-color: #C9A66B !important;
     color: #1F3C4C !important;
 }
+

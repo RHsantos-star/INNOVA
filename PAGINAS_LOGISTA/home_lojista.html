@@ -23,7 +23,6 @@
           <li class="nav-item"><a class="nav-link" href="promocoes_logista.html">Promoções</a></li>
           <li class="nav-item"><a class="nav-link " href="frete_pagamento_logista.html">Pagamentos e Fretes</a></li>
           <li class="nav-item"><a class="nav-link" href="chat_logista.html">Conversas</a></li>
-      
         </ul>
       </div>
     </div>
@@ -35,8 +34,6 @@
     <section class="mb-4" aria-labelledby="titulo-relatorios">
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
         <h4 id="titulo-relatorios" class="section-title m-0">Painel de Relatórios</h4>
-
-        <!-- Ações de relatório -->
         <div class="d-flex gap-2">
           <a class="btn btn-sm btn-outline-primary" href="relatorios/vendas-mensal.csv" download>Baixar relatório (CSV)</a>
           <a class="btn btn-sm btn-outline-secondary" href="relatorios/vendas-mensal.pdf" download>Baixar relatório (PDF)</a>
@@ -44,25 +41,39 @@
       </div>
 
       <div class="row g-3">
+        <?php
+          // Exemplo de KPIs dinâmicos via PHP
+          // Substitua pelos valores reais do banco
+          $vendasMes = 12500.00;
+          $pedidosConcluidos = 128;
+          $ticketMedio = 97.65;
+          $tendVendas = 15; // positivo ou negativo
+          $tendPedidos = 8;
+          $tendTicket = -5;
+
+          function trendClass($valor) {
+            return $valor >= 0 ? 'text-success' : 'text-danger';
+          }
+        ?>
         <div class="col-md-4">
           <div class="card kpi-card p-3">
             <div class="kpi-label">Vendas no mês</div>
-            <div class="kpi-value">R$ 12.500,00</div>
-            <div class="kpi-trend text-success">+15% vs. mês anterior</div>
+            <div class="kpi-value">R$ <?= number_format($vendasMes, 2, ',', '.') ?></div>
+            <div class="kpi-trend <?= trendClass($tendVendas) ?>"><?= ($tendVendas>=0?'+':'') ?><?= $tendVendas ?>% vs. mês anterior</div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card kpi-card p-3">
             <div class="kpi-label">Pedidos concluídos</div>
-            <div class="kpi-value">128</div>
-            <div class="kpi-trend text-success">+8%</div>
+            <div class="kpi-value"><?= $pedidosConcluidos ?></div>
+            <div class="kpi-trend <?= trendClass($tendPedidos) ?>"><?= ($tendPedidos>=0?'+':'') ?><?= $tendPedidos ?>%</div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card kpi-card p-3">
             <div class="kpi-label">Ticket médio</div>
-            <div class="kpi-value">R$ 97,65</div>
-            <div class="kpi-trend text-danger">-5%</div>
+            <div class="kpi-value">R$ <?= number_format($ticketMedio, 2, ',', '.') ?></div>
+            <div class="kpi-trend <?= trendClass($tendTicket) ?>"><?= ($tendTicket>=0?'+':'') ?><?= $tendTicket ?>%</div>
           </div>
         </div>
       </div>
@@ -88,97 +99,34 @@
             </tr>
           </thead>
           <tbody>
-            <!-- EXEMPLOS — substitua pelos dados reais ao integrar -->
-            <tr>
-              <td>#1001</td>
-              <td>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="avatar">MS</span>
-                  <div>
-                    <div class="fw-semibold">Maria Souza</div>
-                    <span class="badge bg-warning text-dark">Pendente</span>
-                  </div>
-                </div>
-              </td>
-              <td>01/10/2025</td>
-              <td>
-                <details class="cupom-details">
-                  <summary class="cupom-summary">Ver endereço e cupom</summary>
-                  <div class="cupom-card">
-                    <div class="cupom-head">
-                      <div>
-                        <div class="cupom-loja">PetAmigo</div>
-                        <div class="cupom-sub">Cupom de Entrega — Pedido #1001</div>
-                      </div>
-                      <div class="cupom-qr" aria-hidden="true"></div>
-                    </div>
-                    <div class="cupom-body">
-                      <div><span class="label">Cliente:</span> Maria Souza</div>
-                      <div><span class="label">Endereço:</span> Rua das Flores, 123 — Centro, Palmas/TO</div>
-                      <div><span class="label">CEP:</span> 77000-000</div>
-                      <div><span class="label">Contato:</span> (63) 9 9999-9999</div>
-                      <div><span class="label">Observações:</span> Portaria 24h</div>
-                    </div>
-                    <div class="cupom-footer">
-                      <a class="btn btn-sm btn-outline-primary" href="cupons/cupom-1001.pdf" download>Baixar cupom (PDF)</a>
-                    </div>
-                  </div>
-                </details>
-              </td>
-              <td class="text-end">R$ 320,00</td>
-              <td class="text-end">
-                <div class="btn-group btn-group-sm" role="group" aria-label="Ações #1001">
-                  <a href="#" class="btn btn-success">Entregar</a>
-                  <a href="#" class="btn btn-outline-danger">Cancelar</a>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>#1002</td>
-              <td>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="avatar">JL</span>
-                  <div>
-                    <div class="fw-semibold">João Lima</div>
-                    <span class="badge bg-warning text-dark">Pendente</span>
-                  </div>
-                </div>
-              </td>
-              <td>30/09/2025</td>
-              <td>
-                <details class="cupom-details">
-                  <summary class="cupom-summary">Ver endereço e cupom</summary>
-                  <div class="cupom-card">
-                    <div class="cupom-head">
-                      <div>
-                        <div class="cupom-loja">PetAmigo</div>
-                        <div class="cupom-sub">Cupom de Entrega — Pedido #1002</div>
-                      </div>
-                      <div class="cupom-qr" aria-hidden="true"></div>
-                    </div>
-                    <div class="cupom-body">
-                      <div><span class="label">Cliente:</span> João Lima</div>
-                      <div><span class="label">Endereço:</span> Av. Tocantins, 456 — Sul, Palmas/TO</div>
-                      <div><span class="label">CEP:</span> 77010-000</div>
-                      <div><span class="label">Contato:</span> (63) 9 8888-8888</div>
-                      <div><span class="label">Observações:</span> Entregar após 18h</div>
-                    </div>
-                    <div class="cupom-footer">
-                      <a class="btn btn-sm btn-outline-primary" href="cupons/cupom-1002.pdf" download>Baixar cupom (PDF)</a>
-                    </div>
-                  </div>
-                </details>
-              </td>
-              <td class="text-end">R$ 199,90</td>
-              <td class="text-end">
-                <div class="btn-group btn-group-sm" role="group" aria-label="Ações #1002">
-                  <a href="#" class="btn btn-success">Entregar</a>
-                  <a href="#" class="btn btn-outline-danger">Cancelar</a>
-                </div>
-              </td>
-            </tr>
-            <!-- /EXEMPLOS -->
+            <?php
+            // Aqui você pode popular dinamicamente com PHP via banco
+            // Exemplo:
+            /*
+            foreach($vendasAEntregar as $venda) {
+              echo "<tr>
+                      <td>#{$venda['id']}</td>
+                      <td>{$venda['cliente']}</td>
+                      <td>{$venda['data']}</td>
+                      <td>
+                        <details class='cupom-details'>
+                          <summary class='cupom-summary'>Ver endereço e cupom</summary>
+                          <div class='cupom-card'>
+                            ...
+                          </div>
+                        </details>
+                      </td>
+                      <td class='text-end'>R$ ".number_format($venda['valor'],2,',','.')."</td>
+                      <td class='text-end'>
+                        <div class='btn-group btn-group-sm' role='group'>
+                          <a href='#' class='btn btn-success'>Entregar</a>
+                          <a href='#' class='btn btn-outline-danger'>Cancelar</a>
+                        </div>
+                      </td>
+                    </tr>";
+            }
+            */
+            ?>
           </tbody>
         </table>
       </div>
@@ -208,66 +156,23 @@
             </tr>
           </thead>
           <tbody>
-            <!-- EXEMPLOS — substitua pelos dados reais ao integrar -->
-            <tr>
-              <td>#1005</td>
-              <td>Ana Paula</td>
-              <td>28/09/2025</td>
-              <td><span class="badge bg-success">Concluída</span></td>
-              <td class="text-end">3</td>
-              <td class="text-end">R$ 289,70</td>
-              <td>Cartão</td>
-            </tr>
-            <tr>
-              <td>#1004</td>
-              <td>Carlos Silva</td>
-              <td>27/09/2025</td>
-              <td><span class="badge bg-success">Concluída</span></td>
-              <td class="text-end">1</td>
-              <td class="text-end">R$ 89,90</td>
-              <td>Pix</td>
-            </tr>
-            <tr>
-              <td>#1003</td>
-              <td>Julia Braga</td>
-              <td>26/09/2025</td>
-              <td><span class="badge bg-danger">Cancelada</span></td>
-              <td class="text-end">2</td>
-              <td class="text-end">R$ 150,00</td>
-              <td>Boleto</td>
-            </tr>
-            <!-- /EXEMPLOS -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Produtos com estoque zerado -->
-    <section aria-labelledby="titulo-estoque-zerado">
-      <h4 id="titulo-estoque-zerado" class="section-title mb-2">Produtos com estoque zerado</h4>
-      <div class="table-responsive">
-        <table class="table align-middle table-hover">
-          <thead class="table-light">
-            <tr>
-              <th>Produto</th>
-              <th>Categoria</th>
-              <th>Marca</th>
-              <th class="text-end">Estoque</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Ração Premium 5kg</td>
-              <td>Alimentos</td>
-              <td>PetMax</td>
-              <td class="text-end text-danger fw-bold">0</td>
-            </tr>
-            <tr>
-              <td>Brinquedo Mordedor</td>
-              <td>Brinquedos</td>
-              <td>Mobix</td>
-              <td class="text-end text-danger fw-bold">0</td>
-            </tr>
+            <?php
+            // Popular dinamicamente via PHP do banco de pedidos
+            /*
+            foreach($vendas as $venda) {
+              $statusClass = $venda['status']=='Concluída'?'bg-success':($venda['status']=='Cancelada'?'bg-danger':'bg-warning');
+              echo "<tr>
+                      <td>#{$venda['id']}</td>
+                      <td>{$venda['cliente']}</td>
+                      <td>{$venda['data']}</td>
+                      <td><span class='badge {$statusClass}'>{$venda['status']}</span></td>
+                      <td class='text-end'>{$venda['itens']}</td>
+                      <td class='text-end'>R$ ".number_format($venda['valor'],2,',','.')."</td>
+                      <td>{$venda['pagamento']}</td>
+                    </tr>";
+            }
+            */
+            ?>
           </tbody>
         </table>
       </div>
@@ -283,5 +188,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  
 </body>
 </html>

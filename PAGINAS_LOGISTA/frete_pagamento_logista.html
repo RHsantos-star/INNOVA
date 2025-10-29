@@ -121,6 +121,7 @@
       </div>
     </div>
   </section>
+  
 
 </main>
 
@@ -140,7 +141,33 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
-<!-- JS Fretes & Pagamentos -->
-<script src="../JS/frete_pagamento.js"></script>
-</body>
-</html>
+
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+
+  <!-- JS para prévia de imagem e ano -->
+  <script>
+    const fileInput = document.getElementById('pImg');
+    const imgPrev = document.getElementById('pImgPrev');
+    const imgPh = document.getElementById('pImgPh');
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        imgPrev.src = ev.target.result;
+        imgPrev.classList.remove('d-none');
+        imgPh.classList.add('d-none');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- JS Produtos -->
+  <script src="../JS/produtos.js"></script>
+</main>

@@ -1,68 +1,43 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("formBanner");
-  const categoriaSelect = form.querySelector("select[name='idCategoriaProduto']");
-  const imagemInput = form.querySelector("input[name='imagem']");
-  const previewContainer = document.createElement("div");
+// função para listar banners em tabela
+function listarBanners(tabelaBanners) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const tbody = document.getElementById(tabelaBanners);
+    const url   = '../PHP/cadastro_banners.php?listar=1';
 
-  // Adiciona área de pré-visualização abaixo do input de imagem
-  previewContainer.className = "mt-3";
-  imagemInput.parentElement.appendChild(previewContainer);
+    const esc = s => (s||'').replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
 
-  // 1️⃣ — Carrega categorias via PHP
-  fetch("../PHP/cadastro_categorias.php")
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.categorias) {
-        categoriaSelect.innerHTML = `<option value="">Selecione...</option>`;
-        data.categorias.forEach((cat) => {
-          const option = document.createElement("option");
-          option.value = cat.idCategoriaProduto;
-          option.textContent = cat.nome;
-          categoriaSelect.appendChild(option);
-        });
-      }
-    })
-    .catch((err) => console.error("Erro ao carregar categorias:", err));
+    const row = b => `
+      <tr>
+        <td>${Number(b.idBanners) || ''}</td>
+        <td>${esc(b.descricao || '-')}</td>
+        <td>${esc(b.categoria || '-')}</td>
+        <td>${esc(b.data_inicio || '-')}</td>
+        <td>${esc(b.data_validade || '-')}</td>
+        <td class="text-center">
+          ${b.imagem ? `<img src="${b.imagem}" style="width:80px;height:auto;" />` : '-'}
+        </td>
+        <td class="text-end">
+          <button class="btn btn-sm btn-warning" data-id="${b.idBanners}">Editar</button>
+          <button class="btn btn-sm btn-danger"  data-id="${b.idBanners}">Excluir</button>
+        </td>
+      </tr>`;
 
-  // 2️⃣ — Pré-visualiza imagem selecionada
-  imagemInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    previewContainer.innerHTML = ""; // limpa anterior
-
-    if (file) {
-      const img = document.createElement("img");
-      img.src = URL.createObjectURL(file);
-      img.alt = "Pré-visualização do banner";
-      img.style.maxWidth = "300px";
-      img.style.borderRadius = "10px";
-      img.style.marginTop = "10px";
-      img.style.boxShadow = "0 2px 8px rgba(0,0,0,0.3)";
-      previewContainer.appendChild(img);
-    }
-  });
-
-  // 3️⃣ — Envia formulário via AJAX para o PHP
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    fetch("../PHP/cadastrar_banner.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        alert(data.message);
-        if (data.status === "success") {
-          form.reset();
-          previewContainer.innerHTML = "";
-        }
+    fetch(url, { cache: 'no-store' })
+      .then(r => r.json())
+      .then(d => {
+        if (!d.ok) throw new Error(d.msg || 'Erro ao listar banners');
+        const banners = d.banners || [];
+        tbody.innerHTML = banners.length
+          ? banners.map(row).join('')
+          : `<tr><td colspan="7" class="text-center text-muted">Nenhum banner cadastrado.</td></tr>`;
       })
-      .catch((error) => {
-        console.error("Erro ao cadastrar banner:", error);
-        alert("Erro ao cadastrar banner. Verifique o console.");
+      .catch(err => {
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center text-danger">Falha ao carregar: ${esc(err.message)}</td></tr>`;
       });
   });
-});
+}
 
+// chama a função
+listarBanners("tbBanners");
