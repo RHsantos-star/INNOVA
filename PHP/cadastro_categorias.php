@@ -70,6 +70,65 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])) {
 }
 
 
+/* ============================ ✏️ EDIÇÃO (Ação 'atualizar') =========================== */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'atualizar') {
+    try {
+        // 1. Coleta e Limpeza/Conversão dos dados
+        $idCategoria = (int)($_POST['id'] ?? 0); // O HTML usa 'id' para o campo hidden
+        $nome = trim($_POST["nomecategoria"] ?? '');
+        $desconto = (float)str_replace(',', '.', $_POST["desconto"] ?? 0);
+
+        // 2. Validações
+        $erros = [];
+        if ($idCategoria <= 0) { $erros[] = 'ID inválido para edição.'; }
+        if ($nome === '') { $erros[] = 'Informe o nome da categoria.'; }
+
+        if ($erros) {
+            redirecWith($REDIRECT_URL, ['erro_categoria' => implode(' ', $erros)]);
+        }
+
+        // 3. Execução da Query
+        $sql = "UPDATE categorias_produtos SET nome = :nome, desconto = :desconto WHERE idCategoriaProduto = :id";
+        $st = $pdo->prepare($sql);
+        
+        $st->bindValue(':nome', $nome, PDO::PARAM_STR);
+        $st->bindValue(':desconto', $desconto);
+        $st->bindValue(':id', $idCategoria, PDO::PARAM_INT);
+
+        $st->execute();
+
+        redirecWith($REDIRECT_URL, ['editar_categoria' => 'ok']);
+
+    } catch (Throwable $e) {
+        redirecWith($REDIRECT_URL, ['erro_categoria' => 'Erro ao editar: ' . $e->getMessage()]);
+    }
+}
+
+
+/* ============================ 🗑️ EXCLUSÃO (Ação 'excluir') =========================== */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'excluir') {
+    try {
+        $idCategoria = (int)($_POST['id'] ?? 0); // O HTML usa 'id' para o campo hidden
+        
+        if ($idCategoria <= 0) {
+            redirecWith($REDIRECT_URL, ['erro_categoria' => 'ID inválido para exclusão.']);
+        }
+
+        $st = $pdo->prepare("DELETE FROM categorias_produtos WHERE idCategoriaProduto = :id");
+        $st->bindValue(':id', $idCategoria, PDO::PARAM_INT);
+        $st->execute();
+
+        redirecWith($REDIRECT_URL, ['excluir_categoria' => 'ok']);
+
+    } catch (Throwable $e) {
+        // Nota: Se a categoria estiver ligada a um produto (Foreign Key), o banco pode dar erro.
+        $msg = (strpos($e->getMessage(), 'Foreign key constraint') !== false) 
+                ? 'Impossível excluir. Existem produtos vinculados a esta categoria.'
+                : 'Erro ao excluir: ' . $e->getMessage();
+
+        redirecWith($REDIRECT_URL, ['erro_categoria' => $msg]);
+    }
+}
 
 
 

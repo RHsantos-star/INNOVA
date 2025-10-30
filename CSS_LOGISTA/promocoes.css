@@ -1,38 +1,130 @@
-.header, .navbar {
-    background-color: #1F3C4C !important;
-    color: #C9A66B !important;
-}
+/* ======= ESTILOS GERAIS ======= */
 
+.table td, .table th { vertical-align: middle; }
+
+.header {
+    background-color: #7b1fa2;
+    /* cor de fundo*/
+    padding: 10px 20px;
+    /*tamanho da área*/
+    align-items: center;
+    /* alinhar no centro*/
+    display: flex;
+    
+    /*redimensionar*/
+    justify-content:space-between;
+    /*colocar os espaços ao lado*/
+}
 .footer {
-    background-color: #1F3C4C !important;
-    color: #C9A66B !important;
+    background-color: #cba3c9;
+    /*cor de fundo*/
+    padding: 15px 40px 15px 40px;
+    /*dimensão*/
+    color: white;
+    /*cor do texto*/
+    font-family: Arial, Helvetica, sans-serif;
+    /*fonte dos textos*/
+
 }
 
-.card, .custom-card {
-    background-color: #868B9F !important;
-    border: 1px solid #1F3C4C !important;
-    color: #fff !important;
+/* Links do menu ao passar o mouse */
+.navbar .nav-link:hover { opacity: 0.9; }
+.navbar{
+    background-color: #7b139e;
 }
 
+/* Ajustes responsivos leves */
+@media (max-width: 576px) {
+  .brand-thumb { width: 100%; height: 160px; }
+  .product-thumb { height: 160px; }
+}
+
+
+body {
+  background-color: #f6f8fa;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #1F3C4C !important;
+}
+
+.section-title {
+  color: #C9A66B;
+}
+
+/* ======= CARD PERSONALIZADO ======= */
+.custom-card {
+  background-color: #868B9F;
+  border: none;
+  color: #fff;
+}
+
+.custom-card .card-header {
+  background-color: #1F3C4C;
+  color: #C9A66B;
+  border-bottom: none;
+}
+
+.custom-card .form-label {
+  color: #C9A66B;
+}
+
+.custom-card .form-control,
+.custom-card .form-select {
+  background-color: #E8E9ED;
+  border: 1px solid #C9A66B;
+  color: #1F3C4C;
+}
+
+.custom-card .form-control:focus,
+.custom-card .form-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(31, 60, 76, 0.3);
+  border-color: #1F3C4C;
+}
+
+/* ======= PRÉ-VISUALIZAÇÃO ======= */
+.preview-banner {
+  width: 100%;
+  height: 200px;
+  background-color: #868B9F;
+  border: 2px solid #1F3C4C;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ======= BOTÕES ======= */
 .btn-primary {
-    background-color: #1F3C4C !important;
-    border-color: #1F3C4C !important;
-    color: #fff !important;
+  background-color: #1F3C4C;
+  border: 1px solid #C9A66B;
 }
 
 .btn-primary:hover {
-    background-color: #162b36 !important;
+  background-color: #2E5870;
 }
 
-.btn-outline-secondary,
+.btn-outline-secondary {
+  color: #C9A66B;
+  border-color: #C9A66B;
+}
+
 .btn-outline-danger {
-    color: #C9A66B !important;
-    border-color: #C9A66B !important;
+  border-color: #C9A66B;
+  color: #C9A66B;
 }
 
-.btn-outline-secondary:hover,
 .btn-outline-danger:hover {
-    background-color: #C9A66B !important;
-    color: #1F3C4C !important;
+  background-color: #8B5A5A;
+  color: #fff;
+}
+
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 768px) {
+  .preview-banner {
+    height: 160px;
+  }
 }
 

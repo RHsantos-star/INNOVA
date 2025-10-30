@@ -45,10 +45,9 @@
         <h5 class="m-0">Cadastro de Categorias</h5>
       </div>
       <div class="card-body">
-        <form action="../php/cadastro_categorias.php" method="post" class="row g-3">
-          <input type="hidden" name="acao" id="catAcao">
-          <input type="hidden" name="id" id="catId">
-
+        <form action="../php/cadastro_categorias.php" method="POST"> 
+    <input type="hidden" name="acao" id="catAcao" value="cadastrar">
+    <input type="hidden" name="id" id="catId" value="">
           <div class="col-md-6">
             <label for="catNome" class="form-label">Nome da categoria</label>
             <input type="text" name="nomecategoria" class="form-control" id="nome" placeholder="Ex.: Banho e Tosa" />
@@ -83,7 +82,7 @@
         <h5 class="m-0">Cadastro de Produtos</h5>
       </div>
       <div class="card-body">
-        <form action="../PHP/cadastro_produtos.php" method="post" class="row g-3" enctype="multipart/form-data">
+        <form id="formProduto" action="../PHP/cadastro_produtos.php" method="post" class="row g-3" enctype="multipart/form-data">
           <input type="hidden" name="acao" id="prodAcao">
           <input type="hidden" name="id" id="prodId">
 
@@ -167,25 +166,35 @@
     </div>
   </section>
 
- <form id="formProduto">
-    <input type="text" name="nome" placeholder="Nome" required>
-    <input type="number" step="0.01" name="preco" placeholder="Preço" required>
-    <input type="text" name="descricao" placeholder="Descrição">
-    <button type="submit">Salvar</button>
-</form>
+ 
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Descrição</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody id="listaProdutos"></tbody>
-</table>
+<section id="lista-produtos" class="mb-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-white">
+            <h5 class="m-0">Produtos Cadastrados</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle m-0">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">ID</th>
+                            <th scope="col" class="text-center">Imagem</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Tamanho</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col" class="text-center">Status</th>
+                            <th scope="col" class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaProdutos">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
 
   <!-- Rodapé -->
