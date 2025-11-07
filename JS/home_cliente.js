@@ -460,6 +460,20 @@
       carregarProdutosPorCategoria(catId);
     });
   }
+// Adicione logo abaixo do BOOT no home_cliente.js
+document.addEventListener("click", (event) => {
+  // Botão DETALHES → vai para compraprodutos.html
+  if (event.target.matches("button.btn-outline-secondary")) {
+    const idProduto = event.target.dataset.id;
+    window.location.href = `compraprodutos.html?id=${idProduto}`;
+  }
+
+  // Botão ADICIONAR AO CARRINHO → vai para favoritos.html
+  if (event.target.matches("button.btn-primary")) {
+    const idProduto = event.target.dataset.id;
+    window.location.href = `favoritos.html?id=${idProduto}`;
+  }
+});
 
   // --------- Boot ---------
   document.addEventListener("DOMContentLoaded", async () => {
@@ -468,4 +482,6 @@
     await carregarProdutosAll();       // carrega produtos iniciais
     wireEvents();
   });
+
+  
 })();

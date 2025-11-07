@@ -1,39 +1,62 @@
-/*frete e formas de pagamento do logista*/
-.table td, .table th { vertical-align: middle; }
+/* ============================
+   Frete e Formas de Pagamento
+   ============================ */
 
+body {
+  background-color: #f7f8fb;
+  color: #C9A66B;
+}
+
+/* Header */
 .header {
-    background-color: #7b1fa2;
-    /* cor de fundo*/
-    padding: 10px 20px;
-    /*tamanho da área*/
-    align-items: center;
-    /* alinhar no centro*/
-    display: flex;
-    
-    /*redimensionar*/
-    justify-content:space-between;
-    /*colocar os espaços ao lado*/
+  background-color: #1F3C4C;
+  color: #C9A66B;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
 }
+
+/* Navbar */
+.navbar {
+  background-color: #1F3C4C;
+  border-bottom: 2px solid #C9A66B;
+}
+.navbar .nav-link {
+  color: #C9A66B !important;
+}
+.navbar .nav-link:hover {
+  color: #868B9F !important;
+}
+
+/* Tabelas */
+.table {
+  background-color: #868B9F;
+  color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.table thead {
+  background-color: #1F3C4C;
+  color: #C9A66B;
+  font-weight: 600;
+}
+
+/* Footer */
 .footer {
-    background-color: #cba3c9;
-    /*cor de fundo*/
-    padding: 15px 40px 15px 40px;
-    /*dimensão*/
-    color: white;
-    /*cor do texto*/
-    font-family: Arial, Helvetica, sans-serif;
-    /*fonte dos textos*/
-
+  background-color: #1F3C4C;
+  color: #C9A66B;
+  padding: 15px 40px;
 }
 
-/* Links do menu ao passar o mouse */
-.navbar .nav-link:hover { opacity: 0.9; }
-.navbar{
-    background-color: #7b139e;
+/* Botões */
+.btn-primary {
+  background-color: #1F3C4C;
+  color: #fff;
+  border: 1px solid #C9A66B;
+}
+.btn-primary:hover {
+  color: #868B9F;
 }
 
-/* Ajustes responsivos leves */
-@media (max-width: 576px) {
-  .brand-thumb { width: 100%; height: 160px; }
-  .product-thumb { height: 160px; }
-}

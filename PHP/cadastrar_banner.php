@@ -33,11 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $acao = $_POST['acao'] ?? 'cadastrar';
     $id   = isset($_POST['id']) ? (int)$_POST['id'] : 0;
     $descricao   = trim($_POST['descricao'] ?? '');
-    $dataInicio  = trim($_POST['data_inicio'] ?? '');
-    $dataValidade = trim($_POST['data_validade'] ?? '');
-    $imagem      = $_FILES['imagem']['tmp_name'] ?? null;
+    $dataInicio  = trim($_POST['data'] ?? '');
+    $dataValidade = trim($_POST['data'] ?? '');
+    $imagem      = $_FILES['foto']['tmp_name'] ?? null;
 
     try {
+        // =====================================
+        // CADASTRAR
+        // =====================================
         if ($acao === 'cadastrar') {
             $imgBlob = $imagem ? file_get_contents($imagem) : null;
             $sql = "INSERT INTO Banners (imagem, data_inicio, data_validade, descricao)
@@ -49,9 +52,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindValue(':desc', $descricao);
             $stmt->execute();
 
-            echo json_encode(["ok" => true, "msg" => "Banner cadastrado com sucesso!"]);
+            // Buscar o banner recém-cadastrado
+            $idNovo = $pdo->lastInsertId();
+            $stmt = $pdo->prepare("SELECT idBanners, descricao, data_inicio, data_validade, imagem FROM Banners WHERE idBanners = :id");
+            $stmt->bindValue(':id', $idNovo, PDO::PARAM_INT);
+            $stmt->execute();
+            $banner = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($banner && $banner['imagem']) {
+                $banner['imagem'] = "data:image/jpeg;base64," . base64_encode($banner['imagem']);
+            }
+
+            echo json_encode(["ok" => true, "msg" => "Banner cadastrado com sucesso!", "banner" => $banner]);
         }
 
+        // =====================================
+        // ATUALIZAR
+        // =====================================
         if ($acao === 'atualizar') {
             if ($id <= 0) throw new Exception("ID inválido para atualização.");
 
@@ -71,6 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode(["ok" => true, "msg" => "Banner atualizado com sucesso!"]);
         }
 
+        // =====================================
+        // EXCLUIR
+        // =====================================
         if ($acao === 'excluir') {
             if ($id <= 0) throw new Exception("ID inválido para exclusão.");
             $stmt = $pdo->prepare("DELETE FROM Banners WHERE idBanners = :id");

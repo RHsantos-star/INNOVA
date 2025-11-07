@@ -1,105 +1,58 @@
 /* ============================
-   Estilo do Painel Logista
+   Produtos Logista
    ============================ */
 
-/* Card e cores principais */
-.table td, .table th {
-    vertical-align: middle;
+body {
+  background-color: #f7f8fb;
+  color: #C9A66B;
 }
 
-/* Header / Menu superior */
-.header, .navbar {
-    background-color: #1F3C4C;
-    color: #C9A66B;
+/* Navbar */
+.navbar {
+  background-color: #1F3C4C;
+  border-bottom: 2px solid #C9A66B;
 }
-
 .navbar .nav-link {
-    color: #C9A66B !important;
-    font-weight: 500;
+  color: #C9A66B !important;
 }
-
 .navbar .nav-link:hover {
-    opacity: 0.8;
+  color: #868B9F !important;
 }
 
-/* Footer */
-.footer {
-    background-color: #1F3C4C;
-    color: #C9A66B;
-    padding: 15px 40px;
-    font-family: Arial, Helvetica, sans-serif;
+/* Cards / Tabelas */
+.card, .table {
+  background-color: #868B9F;
+  border: 1px solid #1F3C4C;
+  color: #fff;
+  border-radius: 6px;
 }
-
-/* Cabeçalho dos cards */
-.card-header {
-    background-color: #1F3C4C;
-    color: #C9A66B;
-    font-weight: 600;
-}
-
-/* Corpo dos cards */
-.card {
-    background-color: #868B9F;
-    color: #fff;
-    border: 1px solid #1F3C4C;
-    border-radius: 6px;
+.card-header, .table thead {
+  background-color: #1F3C4C;
+  color: #C9A66B;
+  font-weight: 600;
 }
 
 /* Botões */
 .btn-primary {
-    background-color: #1F3C4C;
-    border-color: #1F3C4C;
-    color: #fff;
+  background-color: #1F3C4C;
+  border-color: #C9A66B;
+  color: #fff;
 }
-
 .btn-primary:hover {
-    background-color: #162b36;
+  color: #868B9F;
+}
+.btn-outline-danger, .btn-outline-secondary {
+  color: #C9A66B;
+  border-color: #C9A66B;
+}
+.btn-outline-danger:hover, .btn-outline-secondary:hover {
+  background-color: #C9A66B;
+  color: #1F3C4C;
 }
 
-.btn-outline-secondary, .btn-outline-danger {
-    color: #C9A66B;
-    border-color: #C9A66B;
+/* Footer */
+.footer {
+  background-color: #1F3C4C;
+  color: #C9A66B;
+  padding: 15px 40px;
 }
-
-.btn-outline-secondary:hover, .btn-outline-danger:hover {
-    background-color: #C9A66B;
-    color: #1F3C4C;
-}
-
-/* Badges */
-.badge {
-    background-color: #1F3C4C;
-    color: #C9A66B;
-}
-
-/* Pré-visualização da imagem */
-.product-thumb, .prod-thumb {
-    height: 100px;
-    background-color: #C9A66B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 4px;
-    color: #1F3C4C;
-    font-weight: 600;
-}
-
-/* Imagem dentro da prévia */
-.product-thumb img, .prod-thumb img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 576px) {
-    .brand-thumb {
-        width: 100%;
-        height: 160px;
-    }
-
-    .product-thumb {
-        height: 160px;
-    }
-}
-
